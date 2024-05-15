@@ -12,7 +12,7 @@
             <div
                 class="p-0.5 rounded-xl bg-white dark:bg-gray-800 hover:bg-gradient-to-r hover:from-red-500 hover:to-blue-500 transition-all duration-500 ease-in-out shadow-md">
                 <div class="h-full w-full bg-gray-50 p-2 rounded-[calc(.75rem-1px)] dark:bg-gray-900">
-                    <code class="text-sm p-2 text-black dark:text-white">npm i @magic-css/magicbutton</code>
+                    <code class="text-sm p-2 text-black dark:text-white">npm i @magic-css/magiccss</code>
                 </div>
             </div>
             <div
@@ -25,7 +25,7 @@
             </div>
         </div>
     </div>
-    <div class="grid grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 py-4">
         <div
             class="box border-2 border-white dark:border-gray-800 transition-all duration-500 ease-in-out min-w-72 w-full  rounded-xl    shadow-md">
             <div class="h-full w-full bg-gray-50 p-2 rounded-[calc(.75rem-1px)] dark:bg-gray-900">
@@ -131,7 +131,7 @@
             </div>
         </div>
         <div
-            class="col-span-2 box border-2 border-white dark:border-gray-800 transition-all duration-500 ease-in-out min-w-72 w-full  rounded-xl    shadow-md">
+            class="lg:col-span-2 box border-2 border-white dark:border-gray-800 transition-all duration-500 ease-in-out  w-full  rounded-xl   overflow-auto shadow-md">
             <div class="h-full w-full bg-gray-50 p-2 rounded-[calc(.75rem-1px)] dark:bg-gray-900">
                 <div class="text-3xl font-bold w-full pl-2 py-2">Data Table</div>
                 <UDivider class="my-2" />
@@ -203,7 +203,8 @@
     </div>
 </template>
 <script setup lang="ts">
-const color = useState("color");
+
+const color = useState<string>("color")
 
 const data: Array<Object> = [
     { id: 1, name: "John", age: 30 },

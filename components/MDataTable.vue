@@ -1,11 +1,8 @@
 <template>
-    <div class="tabcontent">
+    <div class="tabcontent" :style="{ '--primary-color': color }">
         <div class="tabheader">
-            Records 1 - 10
-            <div class="flex">
-                <MButton color="#1427cf" @click="handleClick" icon="heroicons/chevron-left" />
-                <MButton color="#1427cf" @click="handleClick" icon="heroicons/chevron-right" />
-            </div>
+            <h1 class="reem-kufi">
+                {{ title }}</h1>
         </div>
         <table class="MDtable">
             <thead>
@@ -22,7 +19,7 @@
                     </div>
                 </th>
                 <th v-for="col in cols">
-                    <MInput type="text" />
+                    <MInput type="text" :color="color" />
                     <div class="text-left my-2 ml-2">
                         <button class="p-2 w-full">
                             <div class="flex justify-between">
@@ -47,12 +44,35 @@
                 </tr>
             </tbody>
         </table>
+        <div class="flex justify-between w-full p-2 ">
+            <div>
+                Records 1 - 10
+            </div>
+            <div class="flex">
+                <MButton color="#1427cf" @click="handleClick" icon="heroicons/chevron-left" />
+                <MButton color="#1427cf" @click="handleClick" icon="heroicons/chevron-right" />
+            </div>
+        </div>
     </div>
 </template>
 <script setup lang="ts">
-const { data } = defineProps(["data"]);
-const cols = Object.keys(data[0]);
-const keys = Object.keys(data);
+const props = defineProps({
+    color: {
+        type: String,
+        default: "blue",
+    },
+    data: {
+        type: Array<Object>,
+        default: []
+    },
+    title: {
+        type: String,
+        default: "Datatable"
+    }
+})
+
+const cols = Object.keys(props.data[0]);
+const keys = Object.keys(props.data);
 const selected = ref(Array<{}>());
 const selectAll = ref(false);
 const select = ref(false);
@@ -76,32 +96,43 @@ function selectItem (q: {}) {
     }
 }
 </script>
-<style scoped>
-.tabcontent {
-    background-color: #fcfcfc;
+<style scoped lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi+Fun&family=Reem+Kufi+Ink&display=swap');
+
+.reem-kufi {
+    font-family: "Reem Kufi Fun", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.tabcontent,
+.tabheader {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     border-radius: 0.5rem;
-    border: 1px solid #1427cf;
+}
+
+.tabcontent {
+    background-color: #fff;
+    border: 1px solid #f0f0f0;
+
     color: #000000;
+    width: 100%;
+    overflow-x: auto;
 }
 
 .tabheader {
-    display: flex;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    justify-content: space-between;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 600;
+    opacity: 0.8;
 }
 
-input {
-    border-radius: 5px;
-    padding: 2px;
-}
+
 
 table.MDtable {
-    border: 1px solid #f7f7f7;
+    border: 1px solid #f2f2f3;
     background-color: #ffffff;
     width: 100%;
     text-align: left;
@@ -110,7 +141,7 @@ table.MDtable {
 
 table.MDtable td,
 table.MDtable th {
-    border: 1px solid #f7f7f7;
+    border: 1px solid #f2f2f3;
     padding: 3px 2px;
 }
 
@@ -123,7 +154,7 @@ table.MDtable tr:nth-child(even) {
 }
 
 table.MDtable thead {
-    background: #fcfcfc;
+    background: #fff;
 }
 
 table.MDtable thead th {
@@ -143,7 +174,45 @@ table.MDtable tfoot .links {
 }
 
 .hovered {
-    background-color: #1427cf !important;
+    background-color: var(--primary-color) !important;
     color: white !important;
+}
+
+/* Dark mode styles */
+.dark .tabcontent {
+    background-color: #000000;
+    border: 1px solid #2c2c2e;
+    color: #ffffff;
+}
+
+.dark .tabheader {
+    color: #ffffff;
+
+}
+
+.dark input {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.dark table.MDtable {
+    border-color: #242424;
+    background-color: #2d2d2d;
+    color: #ffffff;
+}
+
+.dark table.MDtable tr:nth-child(even) {
+    background: #222222;
+}
+
+.dark table.MDtable thead {
+    background: #000000;
+    color: #ffffff;
+}
+
+.dark table.MDtable td,
+.dark .MDtable th {
+    border: 1px solid #000000;
+
 }
 </style>

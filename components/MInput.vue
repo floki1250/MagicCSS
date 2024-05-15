@@ -47,15 +47,20 @@ input:hover {
     }
 }
 
-@media (prefers-color-scheme: dark) {
-    .m-input {
-        background-color: #222 !important;
-        border-color: rgba(#fff, 0.5);
-        color: #fff;
-    }
 
-    .m-input::placeholder {
-        color: rgba(#fff, 0.7);
-    }
+.dark .m-input {
+    background-color: #222 !important;
+    border-color: rgba(#535353, 0.5);
+    color: #fff;
+}
+
+.dark .m-input::placeholder {
+    color: rgba(#fff, 0.7);
+}
+
+.dark .m-input:focus,
+.dark input:hover {
+    outline: none;
+    border-color: var(--primary-color);
 }
 </style>
