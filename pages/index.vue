@@ -1,13 +1,13 @@
 <template>
     <div class="h-[50vh] w-full flex justify-center items-center flex-col">
-        <div class="flex">
-            <h1 class="text-8xl font-bold reem-kufi">Magic</h1>
+        <div class="flex m-4 mb-6">
+            <h1 class="text-7xl lg:text-8xl font-bold reem-kufi">Magic</h1>
             <h1
-                class="text-8xl font-extrabold bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent reem-kufi">
+                class="text-7xl lg:text-8xl font-extrabold bg-gradient-to-r from-red-500 to-blue-500 bg-clip-text text-transparent reem-kufi">
                 CSS
             </h1>
         </div>
-        <br />
+
         <div class="flex">
             <div
                 class="p-0.5 rounded-xl bg-white dark:bg-gray-800 hover:bg-gradient-to-r hover:from-red-500 hover:to-blue-500 transition-all duration-500 ease-in-out shadow-md">
@@ -53,11 +53,10 @@
                     <UDivider class="my-2" />
                     <div class="flex justify-between">
                         <div>
-                            <p class="text-md">Change Color of the Button :</p>
-                            <input type="color" v-model="color" class="mr-4" id="color" />
+                            <MButton text="Button" :color="color" icon="gravity-ui/magic-wand" />
                         </div>
                         <div>
-                            <MButton text="Button" :color="color" icon="gravity-ui/magic-wand" />
+                            <MButton text="Button" color="red" icon="gravity-ui/heart" />
                         </div>
                     </div>
                 </div>
@@ -96,12 +95,12 @@
         <div
             class="box border-2 border-white dark:border-gray-800 transition-all duration-500 ease-in-out min-w-72 w-full  rounded-xl    shadow-md">
             <div class="h-full w-full bg-gray-50 p-2 rounded-[calc(.75rem-1px)] dark:bg-gray-900">
-                <div class="text-3xl font-bold w-full pl-2 py-2">Button</div>
+                <div class="text-3xl font-bold w-full pl-2 py-2">CheckBox</div>
                 <UDivider class="my-2" />
                 <div class="p-2 w-full flex flex-col">
                     <div class="flex items-center whitespace-nowrap">
                         <code
-                            class="text-sm bg-gray-100 dark:bg-gray-800 p-2 text-black dark:text-white rounded-lg">npm i @magic-css/magicbutton</code>
+                            class="text-sm bg-gray-100 dark:bg-gray-800 p-2 text-black dark:text-white rounded-lg">npm i @magic-css/magiccheckbox</code>
                     </div>
 
                     <div class="my-2 flex">
@@ -120,11 +119,7 @@
                     <UDivider class="my-2" />
                     <div class="flex justify-between">
                         <div>
-                            <p class="text-md">Change Color of the Button :</p>
-                            <input type="color" v-model="color" class="mr-4" id="color" />
-                        </div>
-                        <div>
-                            <MButton text="Button" :color="color" icon="gravity-ui/magic-wand" />
+                            <MCheckBox :color="color" />
                         </div>
                     </div>
                 </div>
@@ -157,7 +152,7 @@
                     <UDivider class="my-2" />
                     <div class="flex justify-between">
                         <ClientOnly fallback-tag="span" fallback="Loading ...">
-                            <MDataTable :data="data" />
+                            <MDataTable :data="data" :color="color" />
                         </ClientOnly>
                     </div>
                 </div>

@@ -1,48 +1,50 @@
 <template>
-  <input type="checkbox" class="ui-checkbox" :id="id" :value="value" v-model="checked" />
+  <input type="checkbox" class="m-checkbox" :id="id" :value="value" v-model="checked"
+    :style="{ '--primary-color': color }" />
 </template>
 
 <script setup lang="ts">
 const props = defineProps({
   id: String,
   value: { default: false },
+  color: {
+    type: String,
+    default: "blue",
+  },
 });
 
 const checked = ref(props.value);
 </script>
 <style scoped>
-.ui-checkbox {
-  --primary-color: #1677ff;
+.m-checkbox {
   --secondary-color: #fff;
-  --primary-hover-color: #4096ff;
   /* checkbox */
   --checkbox-diameter: 20px;
   --checkbox-border-radius: 5px;
-  --checkbox-border-color: #d9d9d9;
+  --checkbox-border-color: #e7e7e7;
   --checkbox-border-width: 1px;
   --checkbox-border-style: solid;
   /* checkmark */
   --checkmark-size: 1.5;
 }
 
-.ui-checkbox,
-.ui-checkbox *,
-.ui-checkbox *::before,
-.ui-checkbox *::after {
+.m-checkbox,
+.m-checkbox *,
+.m-checkbox *::before,
+.m-checkbox *::after {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-.ui-checkbox {
+.m-checkbox {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   width: var(--checkbox-diameter);
   height: var(--checkbox-diameter);
   border-radius: var(--checkbox-border-radius);
-  background: var(--secondary-color);
-  border: var(--checkbox-border-width) var(--checkbox-border-style)
-    var(--checkbox-border-color);
+  background: #fff;
+  border: var(--checkbox-border-width) var(--checkbox-border-style) var(--checkbox-border-color);
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
@@ -50,7 +52,7 @@ const checked = ref(props.value);
   position: relative;
 }
 
-.ui-checkbox::after {
+.m-checkbox::after {
   content: "";
   position: absolute;
   top: 0;
@@ -66,15 +68,15 @@ const checked = ref(props.value);
   transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
 }
 
-.ui-checkbox::before {
+.m-checkbox::before {
   top: 40%;
   left: 50%;
   content: "";
   position: absolute;
   width: 4px;
   height: 7px;
-  border-right: 2px solid var(--secondary-color);
-  border-bottom: 2px solid var(--secondary-color);
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
   -webkit-transform: translate(-50%, -50%) rotate(45deg) scale(0);
   -ms-transform: translate(-50%, -50%) rotate(45deg) scale(0);
   transform: translate(-50%, -50%) rotate(45deg) scale(0);
@@ -86,16 +88,16 @@ const checked = ref(props.value);
 
 /* actions */
 
-.ui-checkbox:hover {
+.m-checkbox:hover {
   border-color: var(--primary-color);
 }
 
-.ui-checkbox:checked {
+.m-checkbox:checked {
   background: var(--primary-color);
   border-color: transparent;
 }
 
-.ui-checkbox:checked::before {
+.m-checkbox:checked::before {
   opacity: 1;
   -webkit-transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
   -ms-transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
@@ -105,7 +107,7 @@ const checked = ref(props.value);
   transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
 }
 
-.ui-checkbox:active:not(:checked)::after {
+.m-checkbox:active:not(:checked)::after {
   -webkit-transition: none;
   -o-transition: none;
   -webkit-box-shadow: none;

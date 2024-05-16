@@ -7,15 +7,9 @@
         <table class="MDtable">
             <thead>
                 <th>
-                    <div style="text-align: center">
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 15 15">
-                                <path fill="none" stroke="#dbdbdb" stroke-linecap="square"
-                                    d="M14.5 2.499c0 1.103-3.134 1.998-7 1.998S.5 3.602.5 2.5m14 0c0-1.105-3.134-2-7-2s-7 .895-7 1.999m14 0v9.993c0 1.103-3.134 1.999-7 1.999s-7-.895-7-1.999V2.5m14 4.996c0 1.104-3.134 2-7 2s-7-.896-7-2" />
-                            </svg>
-                        </div>
-                        <br />
-                        <MCheckBox type="checkbox" id="all" v-model="selectAll" @change="selectAllItems" class="" />
+                    <div style="text-align: center;margin-top: 50px;">
+                        <MCheckBox type="checkbox" id="all" v-model="selectAll" @change="selectAllItems"
+                            :color="color" />
                     </div>
                 </th>
                 <th v-for="col in cols">
@@ -38,7 +32,7 @@
                 <tr v-for="(key, rowIndex) in keys" :key="rowIndex" @mouseenter="hoveredRow = rowIndex"
                     @mouseleave="hoveredRow = null" :class="{ hovered: hoveredRow === rowIndex }">
                     <td class="text-center">
-                        <MCheckBox :id="key" v-model="select" @change="selectItem(data[key])" />
+                        <MCheckBox :id="key" v-model="select" @change="selectItem(data[key])" :color="color" />
                     </td>
                     <td class="text-center" v-for="value in data[key]">{{ value }}</td>
                 </tr>
@@ -49,8 +43,18 @@
                 Records 1 - 10
             </div>
             <div class="flex">
-                <MButton color="#1427cf" @click="handleClick" icon="heroicons/chevron-left" />
-                <MButton color="#1427cf" @click="handleClick" icon="heroicons/chevron-right" />
+                <div class="pagination-icon" @click="handleClick">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="m12 2l.324.001l.318.004l.616.017l.299.013l.579.034l.553.046c4.785.464 6.732 2.411 7.196 7.196l.046.553l.034.579q.008.147.013.299l.017.616L22 12l-.005.642l-.017.616l-.013.299l-.034.579l-.046.553c-.464 4.785-2.411 6.732-7.196 7.196l-.553.046l-.579.034q-.147.008-.299.013l-.616.017L12 22l-.642-.005l-.616-.017l-.299-.013l-.579-.034l-.553-.046c-4.785-.464-6.732-2.411-7.196-7.196l-.046-.553l-.034-.579l-.013-.299l-.017-.616Q2 12.327 2 12l.001-.324l.004-.318l.017-.616l.013-.299l.034-.579l.046-.553c.464-4.785 2.411-6.732 7.196-7.196l.553-.046l.579-.034q.147-.008.299-.013l.616-.017Q11.673 2 12 2m1.707 6.293a1 1 0 0 0-1.414 0l-3 3l-.083.094a1 1 0 0 0 .083 1.32l3 3l.094.083a1 1 0 0 0 1.32-.083l.083-.094a1 1 0 0 0-.083-1.32L11.415 12l2.292-2.293l.083-.094a1 1 0 0 0-.083-1.32" />
+                    </svg>
+                </div>
+                <div class="pagination-icon" @click="handleClick">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M12 2q-.327 0-.642.005l-.616.017l-.299.013l-.579.034l-.553.046c-4.785.464-6.732 2.411-7.196 7.196l-.046.553l-.034.579q-.008.147-.013.299l-.017.616l-.004.318L2 12q0 .327.005.642l.017.616l.013.299l.034.579l.046.553c.464 4.785 2.411 6.732 7.196 7.196l.553.046l.579.034q.147.008.299.013l.616.017L12 22l.642-.005l.616-.017l.299-.013l.579-.034l.553-.046c4.785-.464 6.732-2.411 7.196-7.196l.046-.553l.034-.579q.008-.147.013-.299l.017-.616L22 12l-.005-.642l-.017-.616l-.013-.299l-.034-.579l-.046-.553c-.464-4.785-2.411-6.732-7.196-7.196l-.553-.046l-.579-.034l-.299-.013l-.616-.017l-.318-.004zm-1.707 6.293a1 1 0 0 1 1.32-.083l.094.083l3 3a1 1 0 0 1 .083 1.32l-.083.094l-3 3a1 1 0 0 1-1.497-1.32l.083-.094L12.585 12l-2.292-2.293a1 1 0 0 1-.083-1.32z" />
+                    </svg>
+                </div>
             </div>
         </div>
     </div>
@@ -103,6 +107,18 @@ function selectItem (q: {}) {
     font-family: "Reem Kufi Fun", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
+}
+
+.pagination-icon {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    color: var(--primary-color);
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.pagination-icon:hover {
+    scale: 1.2;
 }
 
 .tabcontent,

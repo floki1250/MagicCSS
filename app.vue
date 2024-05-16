@@ -16,11 +16,12 @@
 
 
           <div>
-            <select v-model="$colorMode.preference">
-              <option value="system">System</option>
-              <option value="light">Light</option>
-              <option value="dark">Dark</option>
-            </select>
+            <div
+              @click="$colorMode.preference == 'light' ? $colorMode.preference = 'dark' : $colorMode.preference = 'light'">
+              <UIcon class="text-2xl  "
+                :name="$colorMode.preference == 'light' ? 'i-heroicons-sun' : 'i-heroicons-moon'" />
+            </div>
+
           </div>
         </div>
       </header>
