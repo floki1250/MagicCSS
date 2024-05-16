@@ -18,7 +18,7 @@
             <div
                 class="ml-2 p-0.5 rounded-xl bg-white dark:bg-gray-800 hover:bg-gradient-to-r hover:from-red-500 hover:to-blue-500 transition-all duration-500 ease-in-out shadow-md">
                 <div class="h-full w-full bg-gray-50 p-2 rounded-[calc(.75rem-1px)] dark:bg-gray-900">
-                    <NuxtLink to="https://www.github.com/floki1250/magic-css" target="_blank">
+                    <NuxtLink to="https://www.github.com/floki1250/magiccss" target="_blank">
                         <IconsGithubIcon class="text-2xl" />
                     </NuxtLink>
                 </div>
