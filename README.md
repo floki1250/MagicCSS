@@ -1,3 +1,6 @@
+
+![Group 2](https://github.com/floki1250/MagicCSS/assets/37814393/dad29786-e8d1-4b36-9cbd-cf55d8e291b9)
+
 # MagicCSS
 
 MagicCSS is a versatile Vue 3 CSS library designed to add a touch of enchantment to your web projects. With a collection of meticulously crafted components, MagicCSS empowers developers to effortlessly elevate their user interfaces with stunning designs and seamless integration.
